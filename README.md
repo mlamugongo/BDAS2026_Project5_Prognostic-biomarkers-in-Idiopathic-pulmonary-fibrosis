@@ -34,7 +34,7 @@ This comprehensive workshop project demonstrates how to predict **Forced Vital C
 
 ```bash
 # Clone or download the project
-cd ipf-fvc-prediction
+cd BDAS2026_Project5_Prognostic-biomarkers-in-Idiopathic-pulmonary-fibrosis
 
 # Create virtual environment
 python -m venv venv
@@ -46,37 +46,6 @@ pip install -r requirements.txt
 # Optional: Install with all extra features
 pip install -r requirements.txt
 pip install -e ".[all]"
-```
-
-### Option 2: Using setuptools (PEP 517)
-
-```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install package in development mode
-pip install -e "."
-
-# Or with all optional dependencies
-pip install -e ".[all]"
-```
-
-### Option 3: Using conda
-
-```bash
-# Create conda environment
-conda create -n ipf-fvc python=3.10
-
-# Activate environment
-conda activate ipf-fvc
-
-# Install from requirements.txt
-pip install -r requirements.txt
-
-# Or install key packages with conda
-conda install numpy pandas scipy scikit-learn jupyter matplotlib
-pip install SimpleITK pyradiomics pydicom shap
 ```
 
 ## Quick Start
@@ -92,11 +61,11 @@ This notebook includes:
 - DICOM loading and 3D visualization
 - Lung segmentation techniques
 - Radiomics feature extraction
-- Feature preselection comparison (to do)
+- Feature pre-selection comparison (to do)
 - LASSO model training (to )
 - Model evaluation and explainability (todo)
 
-### 2. Command-Line Scripts: to do
+### 2. Command-Line Scripts: To implement
 
 ```bash
 # Extract radiomics features from training data
@@ -213,17 +182,14 @@ Using PyRadiomics, we extract:
 **Method 1: Variance Threshold**
 - Keep features with variance > threshold
 - Fast, removes near-constant features
-- 📊 Result: ~80-90 features retained
 
 **Method 2: Correlation-based Filtering**
 - Select top N features by |correlation with FVC|
 - Interpretable, domain-guided
-- 📊 Result: 30 best correlated features
 
 **Method 3: Mutual Information**
 - Select top N features by mutual information with FVC
 - Captures non-linear relationships
-- 📊 Result: 30 highest MI features
 
 ### 5. Model Training
 
@@ -340,17 +306,10 @@ model.fit(X_train, y_train)
 
 ## Contributing
 
-Contributions are welcome! Areas for enhancement:
+Have fun! Feel welcome to be creative and meaningfully contribute!
 
-- [ ] Add support for additional segmentation models
-- [ ] Implement temporal analysis (multiple time points)
-- [ ] Add more feature selection methods
-- [ ] Implement deep learning models (CNN)
-- [ ] Add web interface
-- [ ] Improve documentation and examples
 
 ## Performance Tips
-
 1. **Batch Processing**: Process multiple patients in parallel
 2. **GPU Acceleration**: Use GPU for lungmask segmentation
 3. **Feature Caching**: Save extracted features to avoid recomputation
@@ -381,10 +340,10 @@ If you use this project in your research, please cite:
 
 ```bibtex
 @software{ipf_fvc_2024,
-  title = {IPF FVC Prediction: Radiomics-based Machine Learning for Disease Progression},
-  author = {IPF Workshop Team},
-  year = {2024},
-  url = {https://github.com/example/ipf-fvc-prediction}
+  title = {XX},
+  author = {XX},
+  year = {2026},
+  url = {https://github.com/mlamugongo/BDAS2026_Project5_Prognostic-biomarkers-in-Idiopathic-pulmonary-fibrosis}
 }
 ```
 
