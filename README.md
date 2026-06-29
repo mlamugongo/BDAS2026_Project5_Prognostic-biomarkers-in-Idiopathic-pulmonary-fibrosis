@@ -96,7 +96,7 @@ This notebook includes:
 - LASSO model training (to )
 - Model evaluation and explainability (todo)
 
-### 2. Command-Line Scripts
+### 2. Command-Line Scripts: to do
 
 ```bash
 # Extract radiomics features from training data
@@ -116,10 +116,17 @@ from ipf_fvc import imaging, segmentation, radiomics, modeling
 import SimpleITK as sitk
 
 # Load DICOM series
-ct_image = imaging.load_dicom_series("path/to/patient/dicoms")
+ct_image = load_scans(str(patient_path))
 
 # Segment lungs
-lung_mask = segmentation.segment_lungs_by_threshold(ct_image)
+# inferer = LMInferer(modelname='LTRCLobes', fillmodel='R231')
+inferer = LMInferer(modelname="R231CovidWeb") # default model is U-net(R231): Explore and see which model works best
+
+#segmentation
+# Run lungmask
+segmentation = inferer.apply(sitk_ct)
+# Convert segmentation back to NIfTI (whole lung mask)
+mask_img = nib.Nifti1Image((segmentation).astype("int16"), nii.affine)
 
 # Extract radiomics features
 features = radiomics.extract_radiomics_features(ct_image, lung_mask, "patient_001")
@@ -300,9 +307,7 @@ model.fit(X_train, y_train)
 ### Temporal Modeling
 
 ```python
-# Use multiple time points
-X_multi_time = np.concatenate([X_baseline, X_followup], axis=1)
-model.fit(X_multi_time, fvc_decline)
+
 ```
 
 ## Troubleshooting
@@ -331,29 +336,7 @@ model.fit(X_multi_time, fvc_decline)
 
 ## Testing
 
-```bash
-# Run all tests
-pytest
 
-# Run with coverage report
-pytest --cov=ipf_fvc tests/
-
-# Run specific test file
-pytest tests/test_modeling.py -v
-
-# Run with verbose output
-pytest -v --tb=short
-```
-
-## Documentation
-
-Generate documentation with Sphinx:
-
-```bash
-cd docs
-make html
-# Open build/html/index.html in browser
-```
 
 ## Contributing
 
@@ -411,17 +394,10 @@ This project is licensed under the MIT License - see LICENSE file for details.
 
 ## Support & Contact
 
-- 📧 Email: workshop@example.com
-- 📚 Documentation: https://ipf-fvc-prediction.readthedocs.io
-- 🐛 Issues: https://github.com/example/ipf-fvc-prediction/issues
-- 💬 Discussions: https://github.com/example/ipf-fvc-prediction/discussions
+- 📧 Email: amugongol@gmail.com
 
 ## Acknowledgments
-
-- PyRadiomics team for feature extraction framework
-- SHAP team for model explainability tools
-- Medical imaging community for DICOM standards
-- All contributors and testers
+- Acknowledge the work done by former student (Yashodhar)
 
 ---
 
