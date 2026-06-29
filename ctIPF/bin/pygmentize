@@ -1,0 +1,8 @@
+#!/home/amugongo/BDAS2026_Project5_Prognostic-biomarkers-in-Idiopathic-pulmonary-fibrosis/ctIPF/bin/python3
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pygments.cmdline import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

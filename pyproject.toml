@@ -1,0 +1,155 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ipf-fvc-prediction"
+version = "1.0.0"
+description = "Machine learning pipeline for predicting FVC decline in IPF patients using radiomics features from CT imaging"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "IPF Workshop Team", email = "workshop@example.com"},
+]
+keywords = [
+    "medical-imaging",
+    "radiomics",
+    "machine-learning",
+    "pulmonary-fibrosis",
+    "FVC-prediction",
+    "CT-analysis",
+    "healthcare",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "numpy>=1.21.0",
+    "pandas>=1.3.0",
+    "scipy>=1.7.0",
+    "scikit-learn>=1.0.0",
+    "SimpleITK>=2.1.1",
+    "nibabel>=3.2.0",
+    "pydicom>=2.2.0",
+    "pyradiomics>=3.0.1",
+    "joblib>=1.1.0",
+    "shap>=0.41.0",
+    "matplotlib>=3.4.0",
+    "plotly>=5.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.2.0",
+    "pytest-cov>=2.12.0",
+    "black>=21.0",
+    "flake8>=3.9.0",
+    "isort>=5.9.0",
+    "mypy>=0.910",
+]
+
+viz = [
+    "seaborn>=0.11.0",
+    "plotly>=5.0.0",
+    "kaleido>=0.2.1",
+]
+
+xai = [
+    "shap>=0.41.0",
+    "lime>=0.2.0",
+]
+
+segmentation = [
+    "lungmask>=0.2.0",
+]
+
+jupyter = [
+    "jupyter>=1.0.0",
+    "notebook>=6.4.0",
+    "jupyterlab>=3.0.0",
+    "ipywidgets>=7.6.0",
+]
+
+docs = [
+    "sphinx>=4.0.0",
+    "sphinx-rtd-theme>=1.0.0",
+]
+
+all = [
+    "ipf-fvc-prediction[dev,viz,xai,segmentation,jupyter,docs]",
+]
+
+[project.urls]
+Homepage = "https://github.com/example/ipf-fvc-prediction"
+Documentation = "https://ipf-fvc-prediction.readthedocs.io"
+Repository = "https://github.com/example/ipf-fvc-prediction.git"
+"Bug Tracker" = "https://github.com/example/ipf-fvc-prediction/issues"
+
+[tool.setuptools]
+packages = ["ipf_fvc"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_glob = [".venv/*"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-v --cov=ipf_fvc --cov-report=html --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.coverage.run]
+branch = true
+source = ["ipf_fvc"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
+
+[tool.coverage.html]
+directory = "htmlcov"

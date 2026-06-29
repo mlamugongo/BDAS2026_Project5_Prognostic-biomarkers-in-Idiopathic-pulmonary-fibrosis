@@ -1,0 +1,59 @@
+# Core scientific computing
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+
+# Medical imaging
+SimpleITK>=2.1.1
+nibabel>=3.2.0
+pydicom>=2.2.0
+
+# Radiomics
+pyradiomics>=3.0.1
+
+# Lung segmentation (optional, but recommended)
+lungmask>=0.2.0
+
+# Machine learning and feature engineering
+joblib>=1.1.0
+optuna>=2.10.0  # Hyperparameter optimization
+
+# XAI and explainability
+shap>=0.41.0
+lime>=0.2.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+plotly>=5.0.0
+kaleido>=0.2.1  # For plotly static export
+
+# Jupyter and notebook support
+jupyter>=1.0.0
+notebook>=6.4.0
+jupyterlab>=3.0.0
+ipywidgets>=7.6.0
+
+# Data and utilities
+tqdm>=4.60.0
+pyyaml>=5.4.0
+
+# Testing
+pytest>=6.2.0
+pytest-cov>=2.12.0
+
+# Documentation
+sphinx>=4.0.0
+sphinx-rtd-theme>=1.0.0
+
+# Development
+black>=21.0  # Code formatter
+flake8>=3.9.0  # Linter
+isort>=5.9.0  # Import sorter
+mypy>=0.910  # Type checker
+
+# Optional: GPU support for lungmask
+# torch>=1.10.0
+# torchvision>=0.11.0
+# --index-url https://download.pytorch.org/whl/cu113  # CUDA 11.3 wheels
